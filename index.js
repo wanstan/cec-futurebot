@@ -154,7 +154,6 @@ const actions = {
 			}
 			console.log('SI STEP 7')
 			return resolve(context)
-			console.log('SI STEP 8')
 		})
 	},
   
@@ -228,7 +227,6 @@ app.post('/webhook', (req, res) => {
             			).then((context) => {
               				// Our bot did everything it has to do.
               				// Now it's waiting for further messages to proceed.
-              				console.log(context);
               				console.log('Waiting for next user messages');
 
               				// Based on the session state, you might want to reset the session.
