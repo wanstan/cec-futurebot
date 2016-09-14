@@ -178,6 +178,34 @@ const actions = {
     		return resolve(context)
     	})
     },
+    
+    swapTrend ({context, entities}) {
+		console.log('ST STEP 1')
+		return new Promise(function(resolve,reject) {
+			var trendChoice = scenarioCombos['trends']
+			context.trend = trendChoice[Math.floor(Math.random() * trendChoice.length)]
+			console.log('YOUR NEW TREND IS: ' + context.trend)
+			return resolve(context)
+		})
+	},
+	
+	swapDisruption ({context, entities}) {
+		console.log('SD STEP 1')
+		return new Promise(function(resolve,reject) {
+			var disruptionChoice = scenarioCombos['disruptions']
+			context.disruption = disruptionChoice[Math.floor(Math.random() * disruptionChoice.length)]
+			console.log('YOUR NEW DISRUPTION IS: ' + context.trend)
+			return resolve(context)
+		})
+	},
+    
+    saveScenario ({context, entities}) {
+		console.log('SSC STEP 1')
+		return new Promise(function(resolve,reject) {
+			console.log('SCENARIO IS: ' + context.trend + ' / ' + context.disruption)
+			return resolve(context)
+		})
+	},
   
 };
 
