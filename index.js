@@ -31,7 +31,7 @@ try {
 }
 
 // Webserver parameter
-//const PORT = process.env.PORT || 8445;
+const PORT = process.env.PORT || 5000;
 
 // Wit.ai parameters
 const WIT_TOKEN = process.env.WIT_TOKEN;
@@ -147,8 +147,6 @@ app.use(({method, url}, rsp, next) => {
 });
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 
-app.set('port', (process.env.PORT || 5000))
-
 // Webhook setup
 app.get('/webhook', (req, res) => {
   if (req.query['hub.mode'] === 'subscribe' &&
@@ -253,9 +251,5 @@ function verifyRequestSignature(req, res, buf) {
   }
 }
 
-// app.listen(PORT);
-// console.log('Listening on :' + PORT + '...');
-
-app.listen(app.get('port'), function() {
-    console.log('running on port', app.get('port'))
-})
+app.listen(PORT);
+console.log('Listening on :' + PORT + '...');
