@@ -144,7 +144,6 @@ const actions = {
 			var industry = firstEntityValue(entities, 'industry')
 			console.log('SI STEP 3')
 			console.log(industry)
-			// returning null ?????
 			if (industry) {
 				console.log('SI STEP 4')
 				console.log('INDUSTRY SAVED: ' + industry)
