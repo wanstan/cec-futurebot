@@ -43,14 +43,9 @@ const FB_APP_SECRET = '050e1ed9174e30aaca3545532fa3227a';
 if (!FB_APP_SECRET) { throw new Error('missing FB_APP_SECRET') }
 
 const FB_VERIFY_TOKEN = 'futureb0t';
-// crypto.randomBytes(8, (err, buff) => {
-//   if (err) throw err;
-//   FB_VERIFY_TOKEN = buff.toString('hex');
-//   console.log(`/webhook will accept the Verify Token "${FB_VERIFY_TOKEN}"`);
-// });
 
 // ----------------------------------------------------------------------------
-// Messenger API specific code
+// MESSENGER API SPECIFIC CODE
 
 // See the Send API reference
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
@@ -76,7 +71,7 @@ const fbMessage = (id, text) => {
 };
 
 // ----------------------------------------------------------------------------
-// Wit.ai bot specific code
+// WIT.AI BOT SPECIFIC CODE
 
 // This will contain all user sessions.
 // Each session has an entry:
