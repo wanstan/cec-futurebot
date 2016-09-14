@@ -156,7 +156,53 @@ const actions = {
 			return resolve(context)
 		})
 	},
+	
+	['buildScenario']({entities, context}) {
+		console.log('BS POINT 1')
+    	return new Promise(function(resolve, reject) {
+    		console.log('BS POINT 2');
+    		var trendChoice = scenarioCombos['trends']
+    		console.log(trendChoice)
+    		console.log('BS POINT 3')
+ 			var disruptionChoice = scenarioCombos['disruptions']
+ 			console.log(disruptionChoice)
+ 			console.log('BS POINT 4')
+ 			console.log(context)
+ 			console.log('BS POINT 5')
+			context.trend = trendChoice[Math.floor(Math.random() * trendChoice.length)]
+			console.log(context)
+			console.log('BS POINT 6')
+			context.disruption = disruptionChoice[Math.floor(Math.random() * disruptionChoice.length)]
+			console.log(context)
+			console.log('BS POINT 7')
+    		return resolve(context)
+    	})
+    },
   
+};
+
+// !!!!! SUPPORTING CODE FOR ACTIONS !!!!!
+
+var scenarioCombos = {
+  trends: [
+    'Trend 1',
+    'Trend 2',
+    'Trend 3',
+    'Trend 4',
+    'Trend 5',
+    'Trend 6',
+  ],
+  disruptions: [
+    'Disruption 1',
+    'Disruption 2',
+    'Disruption 3',
+	'Disruption 4',
+	'Disruption 5',
+	'Disruption 6',
+  ],
+  default: [
+    'DEFAULT',
+  ],
 };
 
 // Setting up our bot
