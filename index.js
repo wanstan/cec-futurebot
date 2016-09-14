@@ -151,6 +151,7 @@ const actions = {
 				console.log('SI STEP 5')
 				context.industryName = industry
 				console.log('SI STEP 6')
+				console.log(context)
 			}
 			console.log('SI STEP 7')
 			return resolve(context)
