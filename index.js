@@ -34,15 +34,15 @@ try {
 const PORT = process.env.PORT || 5000;
 
 // Wit.ai parameters
-const WIT_TOKEN = '2';
+const WIT_TOKEN = 'DM6DDFXBIKDQSKJAFKV3YI7FLDWARL4D';
 
 // Messenger API parameters
-const FB_PAGE_TOKEN = '3';
+const FB_PAGE_TOKEN = 'EAAWeAWXpuZCEBAGuz0DGIdbzydnIXMpExJn9uTtmdfGRZCSvuIB9An7fO5sVb0b0tFkbS5m2XMvyJZAkrkJ2ZChJ3T2rs3mi6f5fbu9TOmbKxvV32uQ6zdqI5qFNgpNeDpR7HzvhjGuTTDJELlkkabNolgAqyAx73OPGo3l9pQZDZD';
 if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
-const FB_APP_SECRET = '4';
+const FB_APP_SECRET = '050e1ed9174e30aaca3545532fa3227a';
 if (!FB_APP_SECRET) { throw new Error('missing FB_APP_SECRET') }
 
-let FB_VERIFY_TOKEN = null;
+let FB_VERIFY_TOKEN = 'futureb0t';
 crypto.randomBytes(8, (err, buff) => {
   if (err) throw err;
   FB_VERIFY_TOKEN = buff.toString('hex');
