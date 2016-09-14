@@ -158,7 +158,7 @@ const actions = {
 	},
 	
 	['buildScenario']({entities, context}) {
-		console.log('BS POINT 1')
+		console.log('BS POINT A')
     	return new Promise(function(resolve, reject) {
     		console.log('BS POINT 2');
     		var trendChoice = scenarioCombos['trends']
