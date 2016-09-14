@@ -218,7 +218,6 @@ var scenarioCombos = {
     'Trend 3',
     'Trend 4',
     'Trend 5',
-    'Trend 6',
   ],
   disruptions: [
     'Disruption 1',
@@ -226,7 +225,6 @@ var scenarioCombos = {
     'Disruption 3',
 	'Disruption 4',
 	'Disruption 5',
-	'Disruption 6',
   ],
   default: [
     'DEFAULT',
