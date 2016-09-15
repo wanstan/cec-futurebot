@@ -52,7 +52,7 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 
 const fbMessage = (id, text, atts) => {
 	if (atts) {
-		var body = JSON.stringify({
+		var body = {
 			recipient: { id },
 			message: {
 				attachment: {
@@ -62,7 +62,7 @@ const fbMessage = (id, text, atts) => {
 				}
 			}
 			},
-		});
+		};
 	} else {
 		var body = JSON.stringify({
     		recipient: { id },
