@@ -243,7 +243,7 @@ const actions = {
 	setScenarioImportance ({context, entities}) {
 		console.log('EXECUTING SET SCENARIO IMPORTANCE ACTION')
 		return new Promise(function(resolve,reject) {
-			var importance = firstEntityValue(entities, 'number')
+			var importance = firstEntityValue(entities, 'wit/number')
 			console.log(importance)
 			if (importance) {
 				console.log('SCENARIO IMPORTANCE RATING: ' + importance)
