@@ -273,26 +273,36 @@ const actions = {
 		})
 	},
 	
-	performLinkedInCheck ({context, entities}) {
-		console.log('EXECUTING PERFORM LINKEDIN CHECK ACTION')
-		return new Promise(function(resolve,reject) {
-			console.log('Checking LinkedIn status...')
-			return resolve(context)
-		})
-	},
+// 	performLinkedInCheck ({context, entities}) {
+// 		console.log('EXECUTING PERFORM LINKEDIN CHECK ACTION')
+// 		return new Promise(function(resolve,reject) {
+// 			console.log('Checking LinkedIn status...')
+// 			return resolve(context)
+// 		})
+// 	},
 	
-	['checkForLogin']({entities, context}) {
-		console.log('EXECUTING CHECK FOR LOGIN ACTION')
-    	return new Promise(function(resolve, reject) {
-    		console.log('Checking login...')
-    		return resolve(context)
-    	})
-    },
+// 	['checkForLogin']({entities, context}) {
+// 		console.log('EXECUTING CHECK FOR LOGIN ACTION')
+//     	return new Promise(function(resolve, reject) {
+//     		console.log('Checking login...')
+//     		return resolve(context)
+//     	})
+//     },
     
-    ['generateGraph']({entities, context}) {
-		console.log('EXECUTING GENERATE GRAPH ACTION')
+//     ['generateGraph']({entities, context}) {
+// 		console.log('EXECUTING GENERATE GRAPH ACTION')
+//     	return new Promise(function(resolve, reject) {
+//     		console.log('Building graph...')
+//     		return resolve(context)
+//     	})
+//     },
+    
+    ['finishSession']({entities, context}) {
+		console.log('EXECUTING FINISH SESSION ACTION')
     	return new Promise(function(resolve, reject) {
-    		console.log('Building graph...')
+    		console.log('Ending session, clearing context')
+    		// clear trend?
+    		// clear disruption?
     		return resolve(context)
     	})
     },
