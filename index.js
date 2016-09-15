@@ -300,6 +300,12 @@ app.get('/webhook', (req, res) => {
   	}
 });
 
+// Graph page
+
+app.get('/graph', function (req, res) {
+  res.send('here\'s your graph');
+})
+
 // Message handler
 app.post('/webhook', (req, res) => {
   // Parse the Messenger payload
