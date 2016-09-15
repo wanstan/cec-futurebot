@@ -58,7 +58,7 @@ const fbMessage = (id, text, atts) => {
 				attachment: {
 					"type": "image",
 					"payload": {
-						"url": { "text" }
+						"url": { text }
 					}
 				}
 			},
