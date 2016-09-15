@@ -50,11 +50,23 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 // See the Send API reference
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
 
-const fbMessage = (id, text) => {
-	const body = JSON.stringify({
-    	recipient: { id },
-    	message: { text },
-  	});
+const fbMessage = (id, text, atts) => {
+	if (atts) {
+		const body = {
+			recipient: { id },
+			attachment: {
+				"type": "image",
+				"payload": {
+					"url": text
+				}
+			},
+		}
+	} else {
+		const body = JSON.stringify({
+    		recipient: { id },
+    		message: { text },
+  		});
+  	}
   	const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
   	return fetch('https://graph.facebook.com/me/messages?' + qs, {
     	method: 'POST',
@@ -69,6 +81,26 @@ const fbMessage = (id, text) => {
     	return json;
   	});
 };
+
+// const fbMessage = (id, text) => {
+// 	const body = JSON.stringify({
+//     	recipient: { id },
+//     	message: { text },
+//   	});
+//   	const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
+//   	return fetch('https://graph.facebook.com/me/messages?' + qs, {
+//     	method: 'POST',
+//     	headers: {'Content-Type': 'application/json'},
+//     	body,
+//   	})
+//   	.then(rsp => rsp.json())
+//   	.then(json => {
+//     	if (json.error && json.error.message) {
+//       	throw new Error(json.error.message);
+//     	}
+//     	return json;
+//   	});
+// };
 
 // ----------------------------------------------------------------------------
 // WIT.AI BOT SPECIFIC CODE
@@ -253,18 +285,28 @@ const actions = {
 
 var scenarioCombos = {
   trends: [
-    'Trend 1',
-    'Trend 2',
-    'Trend 3',
-    'Trend 4',
-    'Trend 5',
+    //'Trend 1',
+    'http://imgur.com/S0fznDJ'
+    //'Trend 2',
+    'http://imgur.com/zVWalHp'
+    //'Trend 3',
+    'http://imgur.com/jGMXFgw'
+    //'Trend 4',
+    'http://imgur.com/mnklqil'
+    //'Trend 5',
+    'http://imgur.com/h6T3oOb'
   ],
   disruptions: [
-    'Disruption 1',
-    'Disruption 2',
-    'Disruption 3',
-	'Disruption 4',
-	'Disruption 5',
+    //'Disruption 1',
+    'http://imgur.com/sArhn7c'
+    //'Disruption 2',
+    'http://imgur.com/DhEqKAd'
+    //'Disruption 3',
+    'http://imgur.com/VrzBVlz'
+	//'Disruption 4',
+	'http://imgur.com/IVo4FoM'
+	//'Disruption 5',
+	'http://imgur.com/bFzZfhb'
   ],
   default: [
     'DEFAULT',
@@ -303,7 +345,8 @@ app.get('/webhook', (req, res) => {
 // Graph page
 
 app.get('/graph', function (req, res) {
-  res.send('here\'s your graph');
+  //res.send('here\'s your graph');
+  res.send(imgur.com/dAiM3C3);
 })
 
 // Message handler
