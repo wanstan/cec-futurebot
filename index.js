@@ -347,8 +347,7 @@ app.get('/webhook', (req, res) => {
 // Graph page
 
 app.get('/graph', function (req, res) {
-  //res.send('here\'s your graph');
-  res.send(imgur.com/dAiM3C3);
+	res.send('GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH');
 })
 
 // Message handler
