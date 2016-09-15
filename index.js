@@ -138,49 +138,37 @@ const actions = {
 // !!!!! CUSTOM ACTIONS !!!!!
   
   	saveIndustry ({context, entities}) {
-		console.log('SI STEP 1')
+		console.log('EXECUTING SAVE INDUSTRY ACTION')
 		return new Promise(function(resolve,reject) {
-			console.log('SI STEP 2')
 			var industry = firstEntityValue(entities, 'industry')
-			console.log('SI STEP 3')
 			console.log(industry)
 			if (industry) {
-				console.log('SI STEP 4')
 				console.log('INDUSTRY SAVED: ' + industry)
-				console.log('SI STEP 5')
 				context.industryName = industry
-				console.log('SI STEP 6')
 				console.log(context)
 			}
-			console.log('SI STEP 7')
 			return resolve(context)
 		})
 	},
 	
 	['buildScenario']({entities, context}) {
-		console.log('BS POINT A')
+		console.log('EXECUTING BUILD SCENARIO ACTION')
     	return new Promise(function(resolve, reject) {
-    		console.log('BS POINT 2');
     		var trendChoice = scenarioCombos['trends']
     		console.log(trendChoice)
-    		console.log('BS POINT 3')
  			var disruptionChoice = scenarioCombos['disruptions']
  			console.log(disruptionChoice)
- 			console.log('BS POINT 4')
  			console.log(context)
- 			console.log('BS POINT 5')
 			context.trend = trendChoice[Math.floor(Math.random() * trendChoice.length)]
 			console.log(context)
-			console.log('BS POINT 6')
 			context.disruption = disruptionChoice[Math.floor(Math.random() * disruptionChoice.length)]
 			console.log(context)
-			console.log('BS POINT 7')
     		return resolve(context)
     	})
     },
     
     swapTrend ({context, entities}) {
-		console.log('ST STEP 1')
+		console.log('EXECUTING SWAP TREND ACTION')
 		return new Promise(function(resolve,reject) {
 			var trendChoice = scenarioCombos['trends']
 			context.trend = trendChoice[Math.floor(Math.random() * trendChoice.length)]
@@ -190,7 +178,7 @@ const actions = {
 	},
 	
 	swapDisruption ({context, entities}) {
-		console.log('SD STEP 1')
+		console.log('EXECUTING SWAP DISRUPTION ACTION')
 		return new Promise(function(resolve,reject) {
 			var disruptionChoice = scenarioCombos['disruptions']
 			context.disruption = disruptionChoice[Math.floor(Math.random() * disruptionChoice.length)]
@@ -200,9 +188,23 @@ const actions = {
 	},
     
     saveScenario ({context, entities}) {
-		console.log('SSC STEP 1')
+		console.log('EXECUTING SAVE SCENARIO ACTION')
 		return new Promise(function(resolve,reject) {
 			console.log('SCENARIO IS: ' + context.trend + ' / ' + context.disruption)
+			return resolve(context)
+		})
+	},
+	
+	setScenarioImportance ({context, entities}) {
+		console.log('EXECUTING SET SCENARIO IMPORTANCE ACTION')
+		return new Promise(function(resolve,reject) {
+			var importance = firstEntityValue(entities, 'scenario_importance')
+			console.log(importance)
+			if (importance) {
+				console.log('SCENARIO IMPORTANCE RATING: ' + importance)
+				context.scenarioImportance = importance
+				console.log(context)
+			}
 			return resolve(context)
 		})
 	},
