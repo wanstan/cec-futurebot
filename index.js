@@ -51,18 +51,29 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
 
 const fbMessage = (id, text, atts) => {
+
 	if (atts) {
 		var body = {
-			recipient: { id },
-			message: {
-				attachment: {
-					"type": "image",
-					"payload": {
-						"url": { text }
-					}
+			attachment: {
+				"type": "image",
+				"payload": {
+					"url": { text }
 				}
 			},
 		};
+
+// 	if (atts) {
+// 		var body = {
+// 			recipient: { id },
+// 			message: {
+// 				attachment: {
+// 					"type": "image",
+// 					"payload": {
+// 						"url": { text }
+// 					}
+// 				}
+// 			},
+// 		};
 	} else {
 		var body = JSON.stringify({
     		recipient: { id },
