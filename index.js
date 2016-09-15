@@ -56,11 +56,11 @@ const fbMessage = (id, text, atts) => {
 			recipient: { id },
 			message: {
 				attachment: {
-				"type": "image",
-				"payload": {
-					"url": text
+					"type": "image",
+					"payload": {
+						"url": { text }
+					}
 				}
-			}
 			},
 		};
 	} else {
