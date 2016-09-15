@@ -246,6 +246,12 @@ const actions = {
 			var importance = firstEntityValue(entities, 'number')
 			console.log(importance)
 			if (importance) {
+				if (importance > 5) {
+					importance = 5;
+				}
+				if (importance < 1) {
+					importance = 1;
+				}
 				console.log('SCENARIO IMPORTANCE RATING: ' + importance)
 				context.scenarioImportance = importance
 				console.log(context)
