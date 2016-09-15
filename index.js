@@ -286,27 +286,27 @@ const actions = {
 var scenarioCombos = {
   trends: [
     //'Trend 1',
-    'http://imgur.com/S0fznDJ'
+    'http://imgur.com/S0fznDJ',
     //'Trend 2',
-    'http://imgur.com/zVWalHp'
+    'http://imgur.com/zVWalHp',
     //'Trend 3',
-    'http://imgur.com/jGMXFgw'
+    'http://imgur.com/jGMXFgw',
     //'Trend 4',
-    'http://imgur.com/mnklqil'
+    'http://imgur.com/mnklqil',
     //'Trend 5',
-    'http://imgur.com/h6T3oOb'
+    'http://imgur.com/h6T3oOb',
   ],
   disruptions: [
     //'Disruption 1',
-    'http://imgur.com/sArhn7c'
+    'http://imgur.com/sArhn7c',
     //'Disruption 2',
-    'http://imgur.com/DhEqKAd'
+    'http://imgur.com/DhEqKAd',
     //'Disruption 3',
-    'http://imgur.com/VrzBVlz'
+    'http://imgur.com/VrzBVlz',
 	//'Disruption 4',
-	'http://imgur.com/IVo4FoM'
+	'http://imgur.com/IVo4FoM',
 	//'Disruption 5',
-	'http://imgur.com/bFzZfhb'
+	'http://imgur.com/bFzZfhb',
   ],
   default: [
     'DEFAULT',
