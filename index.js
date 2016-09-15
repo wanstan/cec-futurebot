@@ -186,11 +186,9 @@ const actions = {
 		console.log('EXECUTING SAVE INDUSTRY ACTION')
 		return new Promise(function(resolve,reject) {
 			var industry = firstEntityValue(entities, 'industry')
-			console.log(industry)
 			if (industry) {
 				console.log('INDUSTRY SAVED: ' + industry)
 				context.industryName = industry
-				console.log(context)
 			}
 			return resolve(context)
 		})
@@ -200,14 +198,9 @@ const actions = {
 		console.log('EXECUTING BUILD SCENARIO ACTION')
     	return new Promise(function(resolve, reject) {
     		var trendChoice = scenarioCombos['trends']
-    		console.log(trendChoice)
  			var disruptionChoice = scenarioCombos['disruptions']
- 			console.log(disruptionChoice)
- 			console.log(context)
 			context.trend = trendChoice[Math.floor(Math.random() * trendChoice.length)]
-			console.log(context)
 			context.disruption = disruptionChoice[Math.floor(Math.random() * disruptionChoice.length)]
-			console.log(context)
     		return resolve(context)
     	})
     },
@@ -266,6 +259,12 @@ const actions = {
 			var imminence = firstEntityValue(entities, 'number')
 			console.log(imminence)
 			if (imminence) {
+				if (imminence > 5) {
+					imminence = 5;
+				}
+				if (imminence < 1) {
+					imminence = 1;
+				}
 				console.log('SCENARIO IMMINENCE RATING: ' + imminence)
 				context.scenarioImminence = imminence
 				console.log(context)
