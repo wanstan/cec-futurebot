@@ -208,6 +208,20 @@ const actions = {
 			return resolve(context)
 		})
 	},
+	
+	setScenarioImminence ({context, entities}) {
+		console.log('EXECUTING SET SCENARIO IMMINENCE ACTION')
+		return new Promise(function(resolve,reject) {
+			var imminence = firstEntityValue(entities, 'scenario_imminence')
+			console.log(imminence)
+			if (imminence) {
+				console.log('SCENARIO IMMINENCE RATING: ' + imminence)
+				context.scenarioImminence = imminence
+				console.log(context)
+			}
+			return resolve(context)
+		})
+	},
   
 };
 
