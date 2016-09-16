@@ -52,31 +52,31 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 
 const fbMessage = (id, text, atts) => {
 		
-	if (atts) {
-		var body = JSON.stringify({
-			recipient: { id },
-			message: {
-				attachment: {
-					"type": "image",
-					"payload": {
-						"url": { text }
-					}
-				}
-			},
-		});
-
-
-// WORKING SENDING URL NOT IMAGE VVV
-
 // 	if (atts) {
-// 		var body = {
-// 			attachment: {
-// 				"type": "image",
-// 				"payload": {
-// 					"url": { text }
+// 		var body = JSON.stringify({
+// 			recipient: { id },
+// 			message: {
+// 				attachment: {
+// 					"type": "image",
+// 					"payload": {
+// 						"url": { text }
+// 					}
 // 				}
 // 			},
-// 		};
+// 		});
+
+
+// WORKING SENDING URL NOT IMAGE V1 VVV
+
+	if (atts) {
+		var body = {
+			attachment: {
+				"type": "image",
+				"payload": {
+					"url": { text }
+				}
+			},
+		};
 
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
