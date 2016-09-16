@@ -51,16 +51,34 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
 
 const fbMessage = (id, text, atts) => {
-
+		
 	if (atts) {
-		var body = {
-			attachment: {
-				"type": "image",
-				"payload": {
-					"url": { text }
+		var body = JSON.stringify({
+			recipient: { id },
+			message: {
+				attachment: {
+					"type": "image",
+					"payload": {
+						"url": { text }
+					}
 				}
 			},
-		};
+		});
+
+
+// WORKING SENDING URL NOT IMAGE VVV
+
+// 	if (atts) {
+// 		var body = {
+// 			attachment: {
+// 				"type": "image",
+// 				"payload": {
+// 					"url": { text }
+// 				}
+// 			},
+// 		};
+
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 // 	if (atts) {
 // 		var body = {
@@ -74,6 +92,7 @@ const fbMessage = (id, text, atts) => {
 // 				}
 // 			},
 // 		};
+
 	} else {
 		var body = JSON.stringify({
     		recipient: { id },
