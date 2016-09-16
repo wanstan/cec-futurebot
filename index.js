@@ -52,46 +52,28 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 
 const fbMessage = (id, text, atts) => {
 		
-// 	if (atts) {
-// 		var body = JSON.stringify({
-// 			recipient: { id },
-// 			message: {
-// 				attachment: {
-// 					"type": "image",
-// 					"payload": {
-// 						"url": { text }
-// 					}
-// 				}
-// 			},
-// 		});
+ 	if (atts) {
+		var body = JSON.stringify({
+    		recipient: { id },
+    		message: {
+    			attachment: {
+					"type": "image",
+					"payload": {
+						"url": text
+					}
+				}
+			},
+  	});
 
+	// console.log(body);
 
-// WORKING SENDING URL NOT IMAGE V1 VVV
+	} else {
+		var body = JSON.stringify({
+    		recipient: { id },
+    		message: { text },
+  		});
+  	}
 
-// 	if (atts) {
-// 		var body = {
-// 			attachment: {
-// 				"type": "image",
-// 				"payload": {
-// 					"url": text
-// 				}
-// 			},
-// 		};
-
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-// 	if (atts) {
-// 		var body = {
-// 			recipient: { id },
-// 			message: {
-// 				attachment: {
-// 					"type": "image",
-// 					"payload": {
-// 						"url": { text }
-// 					}
-// 				}
-// 			},
-// 		};
 
 // 	} else {
 // 		var body = JSON.stringify({
@@ -100,23 +82,21 @@ const fbMessage = (id, text, atts) => {
 //   		});
 //   	}
 
-// BELOW USES TEXT FOR URL BUT SAYS FILE TYPE ISN'T ALLOWED vvvvv
-// 'Error: (#546) The type of file you're trying to attach isn't 
-// allowed. Please try again with a different format.'
+// BELOW SENDS IMAGES FROM URL AS ATTACHMENTS vvvvv
 
-	var body = JSON.stringify({
-    	recipient: { id },
-    	message: {
-    		attachment: {
-				"type": "image",
-				"payload": {
-					"url": text
-				}
-			}
-		},
-  	});
+// 	var body = JSON.stringify({
+//     	recipient: { id },
+//     	message: {
+//     		attachment: {
+// 				"type": "image",
+// 				"payload": {
+// 					"url": text
+// 				}
+// 			}
+// 		},
+//   });
 
-	console.log(body);
+	// console.log(body);
 
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
