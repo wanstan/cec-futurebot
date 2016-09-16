@@ -53,6 +53,7 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 const fbMessage = (id, text, atts) => {
 	
 	var x = text.substring(0,3);
+	console.log(x);
 	
  	if (x == 'http') {
 		var body = JSON.stringify({
