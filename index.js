@@ -110,6 +110,7 @@ const fbMessage = (id, text, atts) => {
 					}
 				}
 			},
+			console.log(message);
   		});
 
 
