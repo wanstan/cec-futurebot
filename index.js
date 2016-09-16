@@ -93,12 +93,24 @@ const fbMessage = (id, text, atts) => {
 // 			},
 // 		};
 
-	//} else {
-		var body = JSON.stringify({
+// 	} else {
+// 		var body = JSON.stringify({
+//     		recipient: { id },
+//     		message: { text },
+//   		});
+//   	}
+
+	var body = JSON.stringify({
     		recipient: { id },
-    		message: { text },
+    		message: attachment: {
+				"type": "image",
+				"payload": {
+					"url": { text }
+				}
+			},
   		});
-  	//}
+
+
   	const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
   	return fetch('https://graph.facebook.com/me/messages?' + qs, {
     	method: 'POST',
