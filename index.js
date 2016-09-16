@@ -50,7 +50,7 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 // See the Send API reference
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
 
-const fbMessage = (id, text, atts) => {
+const fbMessage = (id, text) => {
 	
 	var x = text.substring(0,4);
 	
