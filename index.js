@@ -76,32 +76,6 @@ const fbMessage = (id, text) => {
   		});
   	}
 
-
-// 	} else {
-// 		var body = JSON.stringify({
-//     		recipient: { id },
-//     		message: { text },
-//   		});
-//   	}
-
-// BELOW SENDS IMAGES FROM URL AS ATTACHMENTS vvvvv
-
-// 	var body = JSON.stringify({
-//     	recipient: { id },
-//     	message: {
-//     		attachment: {
-// 				"type": "image",
-// 				"payload": {
-// 					"url": text
-// 				}
-// 			}
-// 		},
-//   });
-
-	// console.log(body);
-
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
   	const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
   	return fetch('https://graph.facebook.com/me/messages?' + qs, {
     	method: 'POST',
