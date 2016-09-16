@@ -110,9 +110,9 @@ const fbMessage = (id, text, atts) => {
 					}
 				}
 			},
-			console.log(message);
   		});
 
+	console.log(body);
 
   	const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
   	return fetch('https://graph.facebook.com/me/messages?' + qs, {
