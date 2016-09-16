@@ -352,7 +352,8 @@ const actions = {
 var scenarioCombos = {
   trends: [
     //'Trend 1',
-    'http://imgur.com/S0fznDJ',
+    'http://imgur.com/7CfCsvH',
+    //'http://imgur.com/S0fznDJ',
     //'Trend 2',
     'http://imgur.com/zVWalHp',
     //'Trend 3',
