@@ -73,34 +73,15 @@ const fbMessage = (id, text, atts) => {
 // 			attachment: {
 // 				"type": "image",
 // 				"payload": {
-// 					"url": { text }
+// 					"url": text
 // 				}
 // 			},
 // 		};
 
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-// 	if (atts) {
-// 		var body = {
-// 			recipient: { id },
-// 			message: {
-// 				attachment: {
-// 					"type": "image",
-// 					"payload": {
-// 						"url": { text }
-// 					}
-// 				}
-// 			},
-// 		};
-
-// 	} else {
-// 		var body = JSON.stringify({
-//     		recipient: { id },
-//     		message: { text },
-//   		});
-//   	}
-
-	var body = JSON.stringify({
+ 	if (atts) {
+ 			var body = JSON.stringify({
     		recipient: { id },
     		message: {
     			attachment: {
@@ -112,7 +93,30 @@ const fbMessage = (id, text, atts) => {
 			},
   		});
 
-	console.log(body);
+	} else {
+		var body = JSON.stringify({
+    		recipient: { id },
+    		message: { text },
+  		});
+  	}
+
+// BELOW USES TEXT FOR URL BUT SAYS FILE TYPE ISN'T ALLOWED vvvvv
+
+// 	var body = JSON.stringify({
+//     	recipient: { id },
+//     	message: {
+//     		attachment: {
+// 				"type": "image",
+// 				"payload": {
+// 					"url": text
+// 				}
+// 			}
+// 		},
+//   });
+// 
+// 	console.log(body);
+
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   	const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
   	return fetch('https://graph.facebook.com/me/messages?' + qs, {
@@ -348,7 +352,7 @@ const actions = {
 var scenarioCombos = {
   trends: [
     //'Trend 1',
-    'imgur.com/S0fznDJ',
+    'http://imgur.com/S0fznDJ',
     //'Trend 2',
     'http://imgur.com/zVWalHp',
     //'Trend 3',
