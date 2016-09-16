@@ -101,6 +101,8 @@ const fbMessage = (id, text, atts) => {
 //   	}
 
 // BELOW USES TEXT FOR URL BUT SAYS FILE TYPE ISN'T ALLOWED vvvvv
+// 'Error: (#546) The type of file you're trying to attach isn't 
+// allowed. Please try again with a different format.'
 
 	var body = JSON.stringify({
     	recipient: { id },
@@ -352,19 +354,20 @@ const actions = {
 var scenarioCombos = {
   trends: [
     //'Trend 1',
-    'http://imgur.com/7CfCsvH',
+    // 'http://imgur.com/7CfCsvH',
     //'http://imgur.com/S0fznDJ',
+    'http://raley.com/images/balmoral.jpg',
     //'Trend 2',
-    'http://imgur.com/7CfCsvH',
+    'http://raley.com/images/balmoral.jpg',
     //'http://imgur.com/zVWalHp',
     //'Trend 3',
-    'http://imgur.com/7CfCsvH',
+    'http://raley.com/images/balmoral.jpg',
     //'http://imgur.com/jGMXFgw',
     //'Trend 4',
-    'http://imgur.com/7CfCsvH',
+    'http://raley.com/images/balmoral.jpg',
     //'http://imgur.com/mnklqil',
     //'Trend 5',
-    'http://imgur.com/7CfCsvH',
+    'http://raley.com/images/balmoral.jpg',
     //'http://imgur.com/h6T3oOb',
   ],
   disruptions: [
