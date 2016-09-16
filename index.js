@@ -68,7 +68,6 @@ const fbMessage = (id, text) => {
   	});
 
 	// console.log(body);
-	// x
 
 	} else {
 		var body = JSON.stringify({
