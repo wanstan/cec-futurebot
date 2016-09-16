@@ -80,41 +80,41 @@ const fbMessage = (id, text, atts) => {
 
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
- 	if (atts) {
- 			var body = JSON.stringify({
-    		recipient: { id },
-    		message: {
-    			attachment: {
-					"type": "image",
-					"payload": {
-						"url": text
-					}
-				}
-			},
-  		});
+// 	if (atts) {
+// 		var body = {
+// 			recipient: { id },
+// 			message: {
+// 				attachment: {
+// 					"type": "image",
+// 					"payload": {
+// 						"url": { text }
+// 					}
+// 				}
+// 			},
+// 		};
 
-	} else {
-		var body = JSON.stringify({
-    		recipient: { id },
-    		message: { text },
-  		});
-  	}
+// 	} else {
+// 		var body = JSON.stringify({
+//     		recipient: { id },
+//     		message: { text },
+//   		});
+//   	}
 
 // BELOW USES TEXT FOR URL BUT SAYS FILE TYPE ISN'T ALLOWED vvvvv
 
-// 	var body = JSON.stringify({
-//     	recipient: { id },
-//     	message: {
-//     		attachment: {
-// 				"type": "image",
-// 				"payload": {
-// 					"url": text
-// 				}
-// 			}
-// 		},
-//   });
-// 
-// 	console.log(body);
+	var body = JSON.stringify({
+    	recipient: { id },
+    	message: {
+    		attachment: {
+				"type": "image",
+				"payload": {
+					"url": text
+				}
+			}
+		},
+  	});
+
+	console.log(body);
 
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
