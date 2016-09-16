@@ -51,8 +51,10 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
 
 const fbMessage = (id, text, atts) => {
-		
- 	if (atts) {
+	
+	var x = text.substring(0,3);
+	
+ 	if (x == 'http') {
 		var body = JSON.stringify({
     		recipient: { id },
     		message: {
