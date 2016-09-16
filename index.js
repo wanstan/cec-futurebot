@@ -52,18 +52,18 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 
 const fbMessage = (id, text, atts) => {
 		
-	if (atts) {
-		var body = JSON.stringify({
-			recipient: { id },
-			message: {
-				attachment: {
-					"type": "image",
-					"payload": {
-						"url": { text }
-					}
-				}
-			},
-		});
+// 	if (atts) {
+// 		var body = JSON.stringify({
+// 			recipient: { id },
+// 			message: {
+// 				attachment: {
+// 					"type": "image",
+// 					"payload": {
+// 						"url": { text }
+// 					}
+// 				}
+// 			},
+// 		});
 
 
 // WORKING SENDING URL NOT IMAGE V1 VVV
@@ -93,12 +93,12 @@ const fbMessage = (id, text, atts) => {
 // 			},
 // 		};
 
-	} else {
+	//} else {
 		var body = JSON.stringify({
     		recipient: { id },
     		message: { text },
   		});
-  	}
+  	//}
   	const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
   	return fetch('https://graph.facebook.com/me/messages?' + qs, {
     	method: 'POST',
