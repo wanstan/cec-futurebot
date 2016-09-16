@@ -100,15 +100,13 @@ const fbMessage = (id, text, atts) => {
 //   		});
 //   	}
 
-	var x = { text };
-
 	var body = JSON.stringify({
     		recipient: { id },
     		message: {
     			attachment: {
 					"type": "image",
 					"payload": {
-						"url": x
+						"url": text
 					}
 				}
 			},
