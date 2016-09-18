@@ -31,8 +31,7 @@ if (!FB_APP_SECRET) { throw new Error('missing FB_APP_SECRET') }
 
 const FB_VERIFY_TOKEN = 'futureb0t';
 
-// ----------------------------------------------------------------------------
-// MESSENGER API SPECIFIC CODE
+// ________________________MESSENGER API SPECIFIC CODE________________________
 
 // See the Send API reference
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
@@ -78,32 +77,13 @@ const fbMessage = (id, text) => {
   	});
 };
 
-// const fbMessage = (id, text) => {
-// 	const body = JSON.stringify({
-//     	recipient: { id },
-//     	message: { text },
-//   	});
-//   	const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
-//   	return fetch('https://graph.facebook.com/me/messages?' + qs, {
-//     	method: 'POST',
-//     	headers: {'Content-Type': 'application/json'},
-//     	body,
-//   	})
-//   	.then(rsp => rsp.json())
-//   	.then(json => {
-//     	if (json.error && json.error.message) {
-//       	throw new Error(json.error.message);
-//     	}
-//     	return json;
-//   	});
-// };
 
-// ----------------------------------------------------------------------------
-// WIT.AI BOT SPECIFIC CODE
+// _________________________WIT.AI BOT SPECIFIC CODE__________________________
 
 // This will contain all user sessions.
 // Each session has an entry:
 // sessionId -> {fbid: facebookUserId, context: sessionState}
+
 const sessions = {};
 
 const findOrCreateSession = (fbid) => {
@@ -163,7 +143,7 @@ const actions = {
     	}
   	},
   
-// !!!!! CUSTOM ACTIONS !!!!!
+// _____________________________CUSTOM ACTIONS________________________________
   
   	saveIndustry ({context, entities}) {
 		console.log('EXECUTING SAVE INDUSTRY ACTION')
@@ -255,30 +235,6 @@ const actions = {
 			return resolve(context)
 		})
 	},
-	
-// 	performLinkedInCheck ({context, entities}) {
-// 		console.log('EXECUTING PERFORM LINKEDIN CHECK ACTION')
-// 		return new Promise(function(resolve,reject) {
-// 			console.log('Checking LinkedIn status...')
-// 			return resolve(context)
-// 		})
-// 	},
-	
-// 	['checkForLogin']({entities, context}) {
-// 		console.log('EXECUTING CHECK FOR LOGIN ACTION')
-//     	return new Promise(function(resolve, reject) {
-//     		console.log('Checking login...')
-//     		return resolve(context)
-//     	})
-//     },
-    
-//     ['generateGraph']({entities, context}) {
-// 		console.log('EXECUTING GENERATE GRAPH ACTION')
-//     	return new Promise(function(resolve, reject) {
-//     		console.log('Building graph...')
-//     		return resolve(context)
-//     	})
-//     },
     
     ['finishSession']({entities, context}) {
 		console.log('EXECUTING FINISH SESSION ACTION')
@@ -292,7 +248,7 @@ const actions = {
   
 };
 
-// !!!!! SUPPORTING CODE FOR ACTIONS !!!!!
+// _______________________SUPPORTING CODE FOR ACTIONS_________________________
 
 var scenarioCombos = {
   trends: [
@@ -314,14 +270,14 @@ var scenarioCombos = {
   ],
 };
 
-// Setting up our bot
+// _____________________________INITIALISING BOT______________________________
 const wit = new Wit({
   	accessToken: WIT_TOKEN,
   	actions,
   	logger: new log.Logger(log.INFO)
 });
 
-// Starting our webserver and putting it all together
+// ____________________________STARTING WEB SERVER____________________________
 const app = express();
 
 app.use(({method, url}, rsp, next) => {
