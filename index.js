@@ -203,7 +203,7 @@ const actions = {
 			var importance = firstEntityValue(entities, 'number')
 			console.log(importance)
 			if (!importance) {
-				importance = 0;
+				importance = 1;
 				console.log('0 VOTE BECAME SCENARIO IMPORTANCE RATING: ' + importance)
 				context.scenarioImportance = importance
 				console.log(context)
