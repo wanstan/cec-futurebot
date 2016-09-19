@@ -40,6 +40,10 @@ const fbMessage = (id, text) => {
 	
 	var x = text.substring(0,4);
 	
+	if(scenarioCombos.trends.indexOf(text) >= 0 || scenarioCombos.disruptions.indexOf(text) >= 0) {
+		console.log("have an image");
+	}
+	
  	if (x == 'http') {
 		var body = JSON.stringify({
     		recipient: { id },
@@ -201,18 +205,17 @@ const actions = {
 		return new Promise(function(resolve,reject) {
 			var importance = firstEntityValue(entities, 'number')
 			console.log(importance)
-// 			if (!importance) {
-// 				importance = 1;
-// 				console.log('0 VOTE BECAME SCENARIO IMPORTANCE RATING: ' + importance)
-// 				context.scenarioImportance = importance
-// 				console.log(context)
-// 			}
-// 			else 
-			if (importance) {
+			if (!importance) {
+				importance = 1;
+				console.log('0 VOTE BECAME SCENARIO IMPORTANCE RATING: ' + importance)
+				context.scenarioImportance = importance
+				console.log(context)
+			}
+			else if (importance) {
 				if (importance > 5) {
 					importance = 5;
 				}
-				if (importance < 1 || !importance) {
+				if (importance < 1) {
 					importance = 1;
 				}
 				console.log('SCENARIO IMPORTANCE RATING: ' + importance)
@@ -222,8 +225,6 @@ const actions = {
 			return resolve(context)
 		})
 	},
-	
-	// typed numbers instead of ints
 	
 	setScenarioImminence ({context, entities}) {
 		console.log('EXECUTING SET SCENARIO IMMINENCE ACTION')
