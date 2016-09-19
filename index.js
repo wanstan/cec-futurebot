@@ -211,7 +211,7 @@ const actions = {
 				if (importance > 5) {
 					importance = 5;
 				}
-				if (importance < 1) {
+				if (importance < 1 || !importance) {
 					importance = 1;
 				}
 				console.log('SCENARIO IMPORTANCE RATING: ' + importance)
