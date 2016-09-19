@@ -201,7 +201,7 @@ const actions = {
 		return new Promise(function(resolve,reject) {
 			var importance = firstEntityValue(entities, 'number')
 			console.log(importance)
-			if (importance) {
+			if (!importance) {
 				if (importance > 5) {
 					importance = 5;
 				}
