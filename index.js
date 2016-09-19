@@ -219,6 +219,7 @@ const actions = {
 	setScenarioImminence ({context, entities}) {
 		console.log('EXECUTING SET SCENARIO IMMINENCE ACTION')
 		return new Promise(function(resolve,reject) {
+			console.log('XXXXX')
 			var imminence = firstEntityValue(entities, 'number')
 			console.log(imminence)
 			if (imminence) {
