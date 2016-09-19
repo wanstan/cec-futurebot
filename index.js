@@ -229,7 +229,13 @@ const actions = {
 			console.log('YYYYY')
 			var imminence = firstEntityValue(entities, 'number')
 			console.log(imminence)
-			if (imminence) {
+			if (!imminence) {
+				imminence = 1;
+				console.log('0 VOTE BECAME SCENARIO IMMINENCE RATING: ' + imminence)
+				context.scenarioImminence = imminence
+				console.log(context)
+			}
+			else if (imminence) {
 				if (imminence > 5) {
 					imminence = 5;
 				}
