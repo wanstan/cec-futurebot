@@ -199,7 +199,6 @@ const actions = {
 	setScenarioImportance ({context, entities}) {
 		console.log('EXECUTING SET SCENARIO IMPORTANCE ACTION')
 		return new Promise(function(resolve,reject) {
-			console.log('XXXXX')
 			var importance = firstEntityValue(entities, 'number')
 			console.log(importance)
 			if (!importance) {
@@ -226,7 +225,6 @@ const actions = {
 	setScenarioImminence ({context, entities}) {
 		console.log('EXECUTING SET SCENARIO IMMINENCE ACTION')
 		return new Promise(function(resolve,reject) {
-			console.log('YYYYY')
 			var imminence = firstEntityValue(entities, 'number')
 			console.log(imminence)
 			if (!imminence) {
