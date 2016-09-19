@@ -201,13 +201,13 @@ const actions = {
 		return new Promise(function(resolve,reject) {
 			var importance = firstEntityValue(entities, 'number')
 			console.log(importance)
-			if (!importance) {
-				importance = 1;
-				console.log('0 VOTE BECAME SCENARIO IMPORTANCE RATING: ' + importance)
-				context.scenarioImportance = importance
-				console.log(context)
-			}
-			else if (importance) {
+// 			if (!importance) {
+// 				importance = 1;
+// 				console.log('0 VOTE BECAME SCENARIO IMPORTANCE RATING: ' + importance)
+// 				context.scenarioImportance = importance
+// 				console.log(context)
+// 			}
+// 			else if (importance) {
 				if (importance > 5) {
 					importance = 5;
 				}
