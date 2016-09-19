@@ -207,7 +207,8 @@ const actions = {
 // 				context.scenarioImportance = importance
 // 				console.log(context)
 // 			}
-// 			else if (importance) {
+// 			else 
+			if (importance) {
 				if (importance > 5) {
 					importance = 5;
 				}
@@ -221,6 +222,8 @@ const actions = {
 			return resolve(context)
 		})
 	},
+	
+	// typed numbers instead of ints
 	
 	setScenarioImminence ({context, entities}) {
 		console.log('EXECUTING SET SCENARIO IMMINENCE ACTION')
