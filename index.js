@@ -205,7 +205,7 @@ const actions = {
 				if (importance > 5) {
 					importance = 5;
 				}
-				if (importance < 1 || importance == null) {
+				if (importance < 1 || importance == false) {
 					importance = 1;
 				}
 				console.log('SCENARIO IMPORTANCE RATING: ' + importance)
@@ -225,7 +225,7 @@ const actions = {
 				if (imminence > 5) {
 					imminence = 5;
 				}
-				if (imminence < 1 || imminence == null) {
+				if (imminence < 1 || imminence == false) {
 					imminence = 1;
 				}
 				console.log('SCENARIO IMMINENCE RATING: ' + imminence)
