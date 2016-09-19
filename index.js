@@ -38,10 +38,13 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 
 const fbMessage = (id, text) => {
 	
-	var x = text.substring(0,4);
-
+	//var x = text.substring(0,4);
 	
- 	if (x == 'http') {
+	if(scenarioCombos.trends.indexOf(text) >= 0 || scenarioCombos.disruptions.indexOf(text) >= 0) {
+// 		console.log("have an image");
+// 	}
+// 	
+//  	if (x == 'http') {
 		var body = JSON.stringify({
     		recipient: { id },
     		message: {
