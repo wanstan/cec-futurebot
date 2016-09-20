@@ -7,6 +7,8 @@ const fetch = require('node-fetch');
 const request = require('request');
 var pg = require('pg');
 
+const app = express();
+
 let Wit = null;
 let log = null;
 try {
@@ -296,6 +298,7 @@ app.get('/db', function (request, response) {
 });
 
 // _____________________________INITIALISING BOT______________________________
+
 const wit = new Wit({
   	accessToken: WIT_TOKEN,
   	actions,
@@ -303,7 +306,6 @@ const wit = new Wit({
 });
 
 // ____________________________STARTING WEB SERVER____________________________
-const app = express();
 
 app.use(({method, url}, rsp, next) => {
   	rsp.on('finish', () => {
