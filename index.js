@@ -5,6 +5,7 @@ const crypto = require('crypto');
 const express = require('express');
 const fetch = require('node-fetch');
 const request = require('request');
+var pg = require('pg');
 
 let Wit = null;
 let log = null;
@@ -279,6 +280,20 @@ var scenarioCombos = {
     'DEFAULT',
   ],
 };
+
+// _______________________________DB CONNECTION_______________________________
+
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM test_table', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+});
 
 // _____________________________INITIALISING BOT______________________________
 const wit = new Wit({
