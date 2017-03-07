@@ -1,3 +1,5 @@
+// HEROKU INSTANCE: cec-futurecasting
+
 'use strict';
 
 const bodyParser = require('body-parser');
@@ -5,19 +7,22 @@ const crypto = require('crypto');
 const express = require('express');
 const fetch = require('node-fetch');
 const request = require('request');
-var pg = require('pg');
+// FOR CONNECTING TO POSTGRES DB (needs pg module installed) -> var pg = require('pg');
 
 const app = express();
 
 let Wit = null;
 let log = null;
+//let config = null;
 try {
   // if running from repo
 	Wit = require('../').Wit;
 	log = require('../').log;
+  //config = require('../').config;
 } catch (e) {
 	Wit = require('node-wit').Wit;
 	log = require('node-wit').log;
+  //config = require('node-wit').config;
 }
 
 // Webserver parameter
@@ -27,7 +32,7 @@ const PORT = process.env.PORT || 5000;
 const WIT_TOKEN = 'DM6DDFXBIKDQSKJAFKV3YI7FLDWARL4D';
 
 // Messenger API parameters
-const FB_PAGE_TOKEN = 'EAAWeAWXpuZCEBAGuz0DGIdbzydnIXMpExJn9uTtmdfGRZCSvuIB9An7fO5sVb0b0tFkbS5m2XMvyJZAkrkJ2ZChJ3T2rs3mi6f5fbu9TOmbKxvV32uQ6zdqI5qFNgpNeDpR7HzvhjGuTTDJELlkkabNolgAqyAx73OPGo3l9pQZDZD';
+const FB_PAGE_TOKEN = 'EAAWeAWXpuZCEBAHt2Y2qrrsuThjr3OVPaPOL7RPm0rMrytHixKpAXE8ZCAfgqyUwMK3XJTBa6FxteI4jPa35FZBtoe9BNWSa8r8T7ErxAk9QVSdhxqKPMZCILXxouzjpzZBhXpWS3r3HSSzBLOUZBKBYCrbDkCn6OTIY3ZAAP09lgZDZD';
 if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
 const FB_APP_SECRET = '050e1ed9174e30aaca3545532fa3227a';
 if (!FB_APP_SECRET) { throw new Error('missing FB_APP_SECRET') }
@@ -39,6 +44,28 @@ const FB_VERIFY_TOKEN = 'futureb0t';
 // See the Send API reference
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
 
+const typingBubble = (id, text) => {
+
+    var body = JSON.stringify({
+        reciconfigpient: { id },
+        "sender_action":"typing_on"
+      });
+
+    const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
+    return fetch('https://graph.facebook.com/me/messages?' + qs, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body,
+    })
+    .then(rsp => rsp.json())
+    .then(json => {
+      if (json.error && json.error.message) {
+        throw new Error(json.error.message);
+      }
+      return json;
+    });
+};
+
 const fbMessage = (id, text) => {
 	
 	if(scenarioCombos.trends.indexOf(text) >= 0 || scenarioCombos.disruptions.indexOf(text) >= 0) {
@@ -47,12 +74,12 @@ const fbMessage = (id, text) => {
     		recipient: { id },
     		message: {
     			attachment: {
-					"type": "image",
-					"payload": {
-						"url": text
-					}
-				}
-			},
+					  "type": "image",
+					  "payload": {
+						  "url": text
+					  }
+				  }
+			  },
   		});
 
 
@@ -127,7 +154,7 @@ const actions = {
       	// Yay, we found our recipient!
       	// Let's forward our bot response to her.
       	// We return a promise to let our bot know when we're done sending
-      	return fbMessage(recipientId, text)
+      	return typingBubble(recipientId, text), fbMessage(recipientId, text)
       	.then(() => null)
       	.catch((err) => {
         	console.error(
@@ -249,12 +276,14 @@ const actions = {
 		})
 	},
     
-    ['finishSession']({entities, context}) {
+    ['clearContext']({entities, context}) {
 		console.log('EXECUTING FINISH SESSION ACTION')
     	return new Promise(function(resolve, reject) {
     		console.log('Ending session, clearing context')
-    		// clear trend?
-    		// clear disruption?
+    		delete context.trend;
+        delete context.disruption;
+        delete context.scenarioImminence;
+        delete context.scenarioImportance;
     		return resolve(context)
     	})
     },
@@ -265,37 +294,61 @@ const actions = {
 
 var scenarioCombos = {
   trends: [
-    'http://imgur.com/S0fznDJ.png',
-    'http://imgur.com/zVWalHp.png',
-    'http://imgur.com/jGMXFgw.png',
-    'http://imgur.com/mnklqil.png',
-    'http://imgur.com/h6T3oOb.png',
+    'http://imgur.com/tVgu1s2.png',
+    'http://imgur.com/yZ49OQU.png',
+    'http://imgur.com/N3ywYZ8.png',
+    'http://imgur.com/hmxz68i.png',
+    'http://imgur.com/D0ZFgUK.png',
+    'http://imgur.com/19LErwk.png',
+    'http://imgur.com/YSYF7PT.png',
+    'http://imgur.com/0mjIFP2.png',
+    'http://imgur.com/iRoGT7O.png',
+    'http://imgur.com/g7JI8Lm.png',
+    'http://imgur.com/ktMMLTQ.png',
+    'http://imgur.com/GpOBmaU.png',
+    'http://imgur.com/rHGedd6.png',
+    'http://imgur.com/uD77RZ0.png',
+    'http://imgur.com/3inST5U.png',
+    'http://imgur.com/bYKIuzf.png',
+    'http://imgur.com/trdjGtx.png',
+    'http://imgur.com/0mtEpEx.png',
+    'http://imgur.com/fwWusRm.png',
+    'http://imgur.com/Fzf9otw.png',
+    'http://imgur.com/xnLl4Xe.png',
+    'http://imgur.com/Zf7TJTb.png',
+    'http://imgur.com/RuW8YcE.png',
+    'http://imgur.com/DOnfDOp.png',
+    'http://imgur.com/NYU4mkE.png',
+    'http://imgur.com/h0IlNro.png',
+    'http://imgur.com/trPJ4IE.png',
+    'http://imgur.com/uGTPygA.png',
+    'http://imgur.com/kjOB22k.png',
   ],
+
   disruptions: [
-    'http://imgur.com/sArhn7c.png',
-    'http://imgur.com/DhEqKAd.png',
-    'http://imgur.com/VrzBVlz.png',
-	'http://imgur.com/IVo4FoM.png',
-	'http://imgur.com/bFzZfhb.png',
+    'http://imgur.com/G3YlW3a.png',
+    'http://imgur.com/KK4NFW8.png',
+    'http://imgur.com/xY8SvDG.png',
+    'http://imgur.com/dR9cOSy.png',
+    'http://imgur.com/3bjSEvr.png',
+    'http://imgur.com/aJILTm7.png',
+    'http://imgur.com/vK8aZ47.png',
+    'http://imgur.com/yeew7ay.png',
+    'http://imgur.com/xjOvuwC.png',
+    'http://imgur.com/MKqVSc6.png',
+    'http://imgur.com/a2tZ3ug.png',
+    'http://imgur.com/w1nnTfg.png',
+    'http://imgur.com/pHRGFc7.png',
+    'http://imgur.com/t7X32oc.png',
+    'http://imgur.com/aWIMU0X.png',
+    'http://imgur.com/oKdQLVX.png',
+    'http://imgur.com/lBTyoeM.png',
   ],
+
   default: [
     'DEFAULT',
   ],
 };
-
-// _______________________________DB CONNECTION_______________________________
-
-app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.render('pages/db', {results: result.rows} ); }
-    });
-  });
-});
 
 // _____________________________INITIALISING BOT______________________________
 
@@ -316,6 +369,10 @@ app.use(({method, url}, rsp, next) => {
 
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 
+app.get('/', (req, res) =>{
+    res.send('I\'m the little bot that\'s going to make you think hard about your future...');
+});
+
 // Webhook setup
 app.get('/webhook', (req, res) => {
   	if (req.query['hub.mode'] === 'subscribe' &&
@@ -325,12 +382,6 @@ app.get('/webhook', (req, res) => {
     	res.sendStatus(400);
   	}
 });
-
-// Graph page
-
-app.get('/graph', function (req, res) {
-	res.send('GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH GRAPH');
-})
 
 // Message handler
 app.post('/webhook', (req, res) => {
@@ -354,6 +405,8 @@ app.post('/webhook', (req, res) => {
           		// We retrieve the message content
           		const {text, attachments} = event.message;
 
+              const maxSteps = 5;
+
           			if (attachments) {
             			// We received an attachment
             			// Let's reply with an automatic message
@@ -367,11 +420,14 @@ app.post('/webhook', (req, res) => {
             			wit.runActions(
               				sessionId, // the user's current session
               				text, // the user's message
-              				sessions[sessionId].context // the user's current session state
+              				sessions[sessionId].context, // the user's current session state
+                      maxSteps
             			).then((context) => {
               				// Our bot did everything it has to do.
               				// Now it's waiting for further messages to proceed.
               				console.log('Waiting for next user messages');
+
+                      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
               				// Based on the session state, you might want to reset the session.
              				// This depends heavily on the business logic of your bot.
@@ -379,6 +435,8 @@ app.post('/webhook', (req, res) => {
               				// if (context['done']) {
               				//   delete sessions[sessionId];
               				// }
+
+                      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
               				// Updating the user's current session state
               				sessions[sessionId].context = context;
